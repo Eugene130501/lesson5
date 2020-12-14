@@ -1,0 +1,11 @@
+my_list = ['one\n', 'two\n', 'three\n']
+with open('file.txt', 'w+') as f:
+    f.writelines(my_list)
+with open('file.txt') as f:
+    lines = 0
+    letters = 0
+    for line in f:
+        lines += line.count('\n')
+        letters = len(line) - 1
+        print(f"there are {letters} letters")
+        print(f"there are {lines} lines")
