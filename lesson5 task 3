@@ -1,0 +1,23 @@
+my_dict = {"Ivan": 10000, "Fedor": 21000, "Nikolai": 24000, "Evgeniy": 19000}
+try:
+    file = open("workers.txt", "w")
+    for last_name, salary in my_dict.items():
+        file.write(last_name + ':' + str(salary) + "\n")
+except IOError:
+    print("Произошла ошибка ввода-вывода!")
+finally:
+    file.close()
+summa = 0
+count = 0
+persons = []
+with open("workers.txt", "r") as f:
+    for line in f:
+        print(line, end="")
+        tokens = line.split(':')
+        if int(tokens[1]) <= 20000:
+            persons.append(tokens[0])
+        summa += int(tokens[1])
+        count += 1
+result = summa / count
+print(f"persons: {persons}")
+print(f"averate: {result}")
